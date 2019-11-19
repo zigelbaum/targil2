@@ -23,6 +23,8 @@ namespace tar1
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
     }
 }
