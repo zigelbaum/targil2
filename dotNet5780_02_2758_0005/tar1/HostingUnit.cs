@@ -101,12 +101,12 @@ namespace tar1
 
         public bool ApproveRequest(GuestRequest guestReq)
         {
-            TimeSpan d = guestReq.EntryDate - guestReq.RealesedDate;
+            TimeSpan d = guestReq.RealesedDate- guestReq.EntryDate;
             Int32 i = guestReq.EntryDate.Month - 1;
             Int32 j = guestReq.EntryDate.Day - 1;
             for (int k = 0; k < d.Days; k++)
             {
-                if (j > 31)
+                if (j > 30)
                 {
                     j = 0;
                     i++;
@@ -125,7 +125,7 @@ namespace tar1
 
             for (int k = 0; k < d.Days; k++)
             {
-                if (j > 31)
+                if (j > 30)
                 {
                     j = 0;
                     i++;
