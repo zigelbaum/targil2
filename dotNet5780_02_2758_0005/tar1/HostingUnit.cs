@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace tar1
 {
-    class HostingUnit : IComparable
+    class HostingUnit: IComparable
     {
         private static Int32 _stSerialKey = 10000000;
         private readonly Int32 _HostingUnitKey;
         private bool[,] _Diary;
 
- 
 
-       
 
-      /*  public bool[,] Diary { get => _Diary;}  !!!!!!!11!  */
+
+
+        /*  public bool[,] Diary { get => _Diary;}  !!!!!!!11!  */
 
         public int HostingUnitKey => _HostingUnitKey;
 
@@ -60,7 +60,7 @@ namespace tar1
         public override string ToString()
         {
             DateTime d;
-            string s = "Hosting Unit Key: " + HostingUnitKey+"\n";
+            string s = "Hosting Unit Key: " + HostingUnitKey + "\n";
             s += "days occupied: ";
             for (int k = 0; k < 12; k++)
                 for (int j = 0; j < 31; j++)
@@ -102,11 +102,11 @@ namespace tar1
         public bool ApproveRequest(GuestRequest guestReq)
         {
             TimeSpan d = guestReq.EntryDate - guestReq.RealesedDate;
-            Int32 i = guestReq.EntryDate.Month-1;
-            Int32 j = guestReq.EntryDate.Day-1;
-            for (int k=0; k<d.Days; k++)
+            Int32 i = guestReq.EntryDate.Month - 1;
+            Int32 j = guestReq.EntryDate.Day - 1;
+            for (int k = 0; k < d.Days; k++)
             {
-                if(j>31)
+                if (j > 31)
                 {
                     j = 0;
                     i++;
@@ -120,8 +120,8 @@ namespace tar1
             }
             guestReq.IsApproved = true;
 
-             i = guestReq.EntryDate.Month - 1;
-             j = guestReq.EntryDate.Day - 1;
+            i = guestReq.EntryDate.Month - 1;
+            j = guestReq.EntryDate.Day - 1;
 
             for (int k = 0; k < d.Days; k++)
             {
@@ -130,7 +130,7 @@ namespace tar1
                     j = 0;
                     i++;
                 }
-                _Diary[i, j] = true;  
+                _Diary[i, j] = true;
                 j++;
             }
             return true;
@@ -140,7 +140,6 @@ namespace tar1
         {
             return this.GetAnnualBusyDays().CompareTo((obj as HostingUnit).GetAnnualBusyDays());
         }
+
     }
-
-
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace tar1
 {
-    class Host : IEnumerable
+    class Host:IEnumerable
     {
         private long hosttKey;
         private List<HostingUnit> hostingUnitCollection;
@@ -63,7 +63,7 @@ namespace tar1
             }
             return andays;
         }
-       
+
         //sort the hosting units according to their annual busy days
         public void SortUnits()
         {
