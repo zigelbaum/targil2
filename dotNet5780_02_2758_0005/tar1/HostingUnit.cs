@@ -31,24 +31,25 @@ namespace tar1
                     _Diary[i, j] = false;
         }//constructor
 
+        //Receives a busy date and checks when the unit is occupied
         private DateTime Occupied(DateTime d)
         {
             DateTime end;
-            for (int i = d.Month - 1; i < 12; i++)
+            for (int i = d.Month - 1; i < 12; i++)//Going through the months-in-the-month is in line with a smaller number in 1 of the real month
             {
                 int j;
-                if (i == d.Month)
-                    j = d.Day;
+                if (i == d.Month-1)//check if this first iteration
+                    j = d.Day;//First day absuluty true
                 else
                     j = 0;
-                for (; j < 31; j++)
+                for (; j < 31; j++)//Moving on the days of the month
                 {
-                    if (!_Diary[i, j])
+                    if (!_Diary[i, j])//If this day it's not on hold
                     {
-                        if (j != 0)
-                            end = new DateTime(d.Year, i, j);
+                        if (j != 0)//Have to return one day before the current day because the current day is not occupied
+                            end = new DateTime(d.Year, i+1, j);
                         else
-                            end = new DateTime(d.Year, i - 1, 31);
+                            end = new DateTime(d.Year, i, 31);
                         return end;
                     }
                 }
